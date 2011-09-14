@@ -1,0 +1,42 @@
+Optimus PHP encryption/decryption algorithm
+
+Why named Optimus?
+--------------
+Because it sounds cool...thats why!
+
+About
+--------------
+This is a tool for encrypting and decrypting relatively large amounts of text.
+It is purely written in PHP and can handle multilevel encryption for extra secure ciphers.
+Can also run in CLI mode for terminal usage.
+
+Files
+--------------
+README - You are reading it now!
+digest.php - This is where you set your encryption/decryption secret
+encrypt.php - For encrypting stuff
+decrypt.php - For decrypting stuff
+index.php - A simple web interface for testing/using Optimus encryption/decryption
+
+Usage
+--------------
+$encryption = new Encrypt("Text to encrypt", 1) // 1 is the level of encryption, accepts 1-6.
+$encryptedData = $encryption->getEncrypted();
+
+$decryption = new Decrypt("Text to decrypt", 1) // 1 is the level of encryption, accepts 1-6.
+$decryptedData = $decryption->getDecrypted();
+
+For decrypting you have to use the same decryptionlevel as encrytionlevel.
+
+Encrypt/Decrypt CLI:
+    Parameters
+        - (String) Text to encrypt
+        - (Int) Level of encryption
+        - (Boolean) Print to screen
+    Example:
+        ./encrypt TextToEncrypt 1 false
+        OR
+        php encrypt TextToEncrypt 1 false
+
+    With decrypt, just change ./encrypt to ./decrypt and remember executive rights
+    with chmod 775 encrypt/decrypt.php for CLI execution.
