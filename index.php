@@ -1,20 +1,20 @@
 <?php
-
 error_reporting(E_ALL);
+
 ini_set('memory_limit', '512M');
 
-include_once("encrypt.php");
-include_once("decrypt.php");
+require_once 'encrypt.php';
+require_once 'decrypt.php';
 
-if(isset($_REQUEST['data']) && $_REQUEST['data'] != "") {
-    if(isset($_REQUEST['encrypt'])) {
-        $crypto = new Encrypt($_REQUEST['data'], $_REQUEST['level']);
-        $data = $crypto->getEncrypted();
-    } elseif(isset($_REQUEST['decrypt'])) {
-        $decrypto = new Decrypt($_REQUEST['data'], $_REQUEST['level']);
-        $data = $decrypto->getDecrypted();
-    }
-}
+	if(isset($_REQUEST['data']) && trim($_REQUEST['data'])) {
+		 if(isset($_REQUEST['encrypt'])) {
+			  $crypto = new Encrypt($_REQUEST['data'], $_REQUEST['level']);
+			  $data = $crypto->getEncrypted();
+		 } elseif(isset($_REQUEST['decrypt'])) {
+			  $decrypto = new Decrypt($_REQUEST['data'], $_REQUEST['level']);
+			  $data = $decrypto->getDecrypted();
+		 }
+	}
 
 ?>
 <html>

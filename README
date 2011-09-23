@@ -1,4 +1,4 @@
-Optimus PHP encryption/decryption algorithm
+Optimus - The PHP encryption/decryption algorithm
 
 Why named Optimus?
 --------------
@@ -20,10 +20,10 @@ index.php - A simple web interface for testing/using Optimus encryption/decrypti
 
 Usage
 --------------
-$encryption = new Encrypt("Text to encrypt", 1) // 1 is the level of encryption, accepts 1-6.
+$encryption = new Encrypt('Text to encrypt', 1) # 1 is the level of encryption, accepts 1-6.
 $encryptedData = $encryption->getEncrypted();
 
-$decryption = new Decrypt("Text to decrypt", 1) // 1 is the level of encryption, accepts 1-6.
+$decryption = new Decrypt('Text to decrypt', 1) # 1 is the level of encryption, accepts 1-6.
 $decryptedData = $decryption->getDecrypted();
 
 For decrypting you have to use the same decryptionlevel as encrytionlevel.
