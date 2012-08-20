@@ -6,7 +6,7 @@ class Encrypt
 {
     private $original, $encrypted, $skey = UNIQUE_ENCRYPTION_TOKEN;
 
-    public  function encode($value)
+    public function encode($value)
 	 { 
         if(!$value)
 		  {
@@ -19,8 +19,8 @@ class Encrypt
         $crypttext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->skey, $text, MCRYPT_MODE_ECB, $iv);
         return trim($this->safe_b64encode($crypttext)); 
     }
-    
-    public  function safe_b64encode($string)
+
+    public function safe_b64encode($string)
 	 {
         $data = base64_encode($string);
         $data = str_replace(array('+', '/', '='), array('-', '_', ''), $data);
@@ -39,7 +39,7 @@ class Encrypt
 
         return base64_decode($data);
     }
-    
+
     public function __construct($data, $level = 1, $printCLI = 0)
     {
         $this->original = $data;
@@ -54,7 +54,12 @@ class Encrypt
 
 		return;
     }
-    
+
+    public function getEncrypted()
+    {
+        return $this->encrypted;
+    }
+
     private function _encrypt($data, $level)
     {
         $encrypted = '';
@@ -72,13 +77,6 @@ class Encrypt
         $encrypted = $baseRand . '-' . implode('-', $base);
         return $encrypted;
     }
-    
-    public function getEncrypted()
-    {
-        return $this->encrypted;
-    }
 }
 
 $encrypt = new Encrypt($_SERVER['argv'][1], (int)$_SERVER['argv'][2], (int)$_SERVER['argv'][3]);
-
-?>
